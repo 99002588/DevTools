@@ -1,21 +1,16 @@
-target: all out clean
-all:bitmask.o myutils.o test.o mystring.o 
-	gcc bitmask.o myutils.o test.o mystring.o -o all.out
 
-bitmask.o:
-	gcc -c bitmask.c
+.PHONY:clean  build run
+NAME= test
 
-myutils.o:
-	gcc -c myutils.c
+SRC= mystring.c\
+myutils.c\
+bitmask.c\
+test.c
 
-test.o:
-	gcc -c test.c
+build:
+	gcc $(SRC) -o $(NAME).out
 
-mystring.o:
-	gcc -c mystring.c
-
+run:
+	./$(NAME).out
 clean:
-	rm -rf *.o *.out
-
-out:
-	.\/all.out
+	rm *.out
